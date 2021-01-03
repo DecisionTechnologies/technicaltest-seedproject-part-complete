@@ -56,6 +56,7 @@ class ViewFilters {
   update(state) {
     if (state.deals.length) {
       console.log("Filter test")
+      console.log("Filter test 2")
       // this.providerFilters.forEach(element => {
       //   element.hasAttribute("disabled") && element.removeAttribute("disabled");
       // });
