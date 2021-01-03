@@ -6,7 +6,7 @@ class Store extends Observable {
     this.state = {
       deals: [],
       productFilters: [],
-      providerFilter: null,
+      providerFilter: null
     };
     this.allDeals = [];
   }
@@ -35,12 +35,8 @@ class Store extends Observable {
     }
 
     if(!this.state.productFilters.includes("broadband")) return;
-
-    console.log(this.state.productFilters, "product Filters")
-
-
     const productFilters = this.state.productFilters;
-    const providerFilter = this.state.providerFilter
+    const providerFilter = this.state.providerFilter;
 
     let deals = this.allDeals.filter((deal) => {
       const productTypes = deal.productTypes
