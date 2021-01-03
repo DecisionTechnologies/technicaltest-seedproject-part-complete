@@ -55,16 +55,14 @@ class ViewFilters {
 
   update(state) {
     if (state.deals.length) {
-      console.log("Filter test")
-      console.log("Filter test 2")
-      // this.providerFilters.forEach(element => {
-      //   element.hasAttribute("disabled") && element.removeAttribute("disabled");
-      // });
-      // this.productFilters.forEach(
-      //   element =>
-      //     element.hasAttribute("disabled") &&
-      //     element.removeAttribute("disabled")
-      // );
+      this.providerFilters.forEach(element => {
+        element.hasAttribute("disabled") && element.removeAttribute("disabled");
+      });
+      this.productFilters.forEach(
+        element =>
+          element.hasAttribute("disabled") &&
+          element.removeAttribute("disabled")
+      );
     } else {
       this.providerFilters.forEach(
         element =>
