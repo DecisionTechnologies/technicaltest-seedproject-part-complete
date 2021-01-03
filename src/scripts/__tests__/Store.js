@@ -2,7 +2,7 @@ import Store from "../Store";
 import mockData from "../../../public/db.json";
 
 describe("filter", () => {
-  //Filter for Criteria 1
+  //Test for Criteria 1
   it("should return all deals when no filters applied", () => {
     // Arrange
     const sut = new Store();
@@ -14,7 +14,7 @@ describe("filter", () => {
     // Assert
     expect(result).toEqual(mockData.deals);
   });
-  // Filter for Criteria 2
+  // Test for Criteria 2
   it("should return 4 broadband only deals when filtering by broadband", () => {
     // Arrange
     const sut = new Store()
@@ -25,7 +25,7 @@ describe("filter", () => {
     // Assert
     expect(result.length).toEqual(4)
   })
-  // Filter for Criteria 3
+  // Test for Criteria 3
   it("should return 4 deals for broadband and tv only when filtering by broadband AND tv", () => {
     // Arrange
     const sut = new Store()
@@ -36,6 +36,18 @@ describe("filter", () => {
     const result = sut.deals
     // Assert
     expect(result.length).toEqual(4)
+  })
+  // Test for Criteria 4
+  it("should return 1 deal for broadband and mobile only when filtering by broadband AND mobile", () => {
+    // Arrange
+    const sut = new Store()
+    sut.setDeals(mockData.deals)
+    sut.setProductFilter("broadband")
+    sut.setProductFilter("mobile")
+    // Act
+    const result = sut.deals
+    // Assert
+    expect(result.length).toEqual(1)
   })
 
 }
