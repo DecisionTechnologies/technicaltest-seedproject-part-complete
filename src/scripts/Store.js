@@ -46,14 +46,12 @@ class Store extends Observable {
           if (val === "fibre broadband") return "broadband";
           return val;
         });
-
       if (productTypes.sort().join(",") === productFilters.sort().join(",")) {
         if (providerFilter === 3 && productFilters.includes("broadband") && productFilters.includes("tv") ) {
           return deal.provider.id === providerFilter
         }
         return true;
       }
-
       return false;
     });
 
@@ -62,28 +60,9 @@ class Store extends Observable {
     } else {
       this.state.deals = this.allDeals
     }
-
     this.notify(this.state);
   }
 
-  // setProviderFilter(value = null) {
-
-  //   this.state.providerFilter = value;
-  //   const providerFilter = this.state.providerFilter
-  //   // Filtering logic for sky
-  //   if (providerFilter === 1) {
-  //     const deals = this.allDeals.filter((deal) => {
-  //       return deal.provider.id === this.state.providerFilter;
-  //     });
-  //     this.state.deals = deals;
-  //   } else {
-  //     this.state.deals = this.allDeals;
-  //   }
-
-  //   this.notify(this.state);
-  // }
-
-  // This works fine
   setDealAgain() {
     const deals = this.allDeals.filter((deal) => {
       return deal.provider.id === this.state.providerFilter;
@@ -94,7 +73,7 @@ class Store extends Observable {
     this.state.providerFilter = value;
     console.log(value)
     const providerFilter = this.state.providerFilter
-    // Filtering logic for sky
+    // Filtering logic for all files (sky and BT)
     if (providerFilter === 1 ||
     providerFilter === 3 ||
     providerFilter === 42 ||
@@ -102,12 +81,11 @@ class Store extends Observable {
     providerFilter === 116)    
     {
       this.setDealAgain()
-    // } 
     } else {
         this.state.deals = this.allDeals;
     } 
     this.notify(this.state);
-    console.log(this.state)
+    // console.log(this.state)
   }
   
 }
