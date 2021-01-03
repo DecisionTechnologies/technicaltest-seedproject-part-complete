@@ -25,6 +25,18 @@ describe("filter", () => {
     // Assert
     expect(result.length).toEqual(4)
   })
+  // Filter for Criteria 3
+  it("should return 4 deals for broadband and tv only when filtering by broadband AND tv", () => {
+    // Arrange
+    const sut = new Store()
+    sut.setDeals(mockData.deals)
+    sut.setProductFilter("broadband")
+    sut.setProductFilter("tv")
+    // Act
+    const result = sut.deals
+    // Assert
+    expect(result.length).toEqual(4)
+  })
 
 }
 
