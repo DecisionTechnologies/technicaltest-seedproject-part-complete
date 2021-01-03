@@ -7,10 +7,8 @@ describe("filter", () => {
     // Arrange
     const sut = new Store();
     sut.setDeals(mockData.deals);
-
     // Act
     const result = sut.deals;
-
     // Assert
     expect(result).toEqual(mockData.deals);
   });
@@ -38,7 +36,7 @@ describe("filter", () => {
     const result = sut.deals
     // Assert
     expect(result.length).toEqual(4)
-  })
+  });
 
   // Test for Criteria 4
   it("should return 1 deal for broadband and mobile only when filtering by broadband AND mobile", () => {
@@ -51,7 +49,7 @@ describe("filter", () => {
     const result = sut.deals
     // Assert
     expect(result.length).toEqual(1)
-  })
+  });
 
   // Test for Criteria 5
   it("should return 1 deal for Sky only when filtering by sky", () => {
@@ -63,10 +61,19 @@ describe("filter", () => {
     const result = sut.deals
     // Assert
     expect(result.length).toEqual(1)
-  })
+  });
 
-
-
-}
-
-);
+  // Test for Criteria 6
+  it("should return 2 deals when filtering by BT, broadband AND tv", () => {
+    // Arrange
+    const sut = new Store()
+    sut.setDeals(mockData.deals)
+    sut.setProviderFilter(3)
+    sut.setProductFilter("broadband")
+    sut.setProductFilter("tv")
+    // Act
+    const result = sut.deals
+    // Assert
+    expect(result.length).toEqual(2)
+  });
+});
