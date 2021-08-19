@@ -37,6 +37,26 @@ describe("Filters", () => {
           matchingDeals.map((deal) => deal.id)
         );
       });
+
+      it("should return all broadband and tv deals", () => {
+        store.setProductFilter("broadband");
+        store.setProductFilter("tv");
+        const matchingDeals = mockData.deals.filter(
+          (deal) =>
+            deal.productTypes.some((type) => /broadband/i.test(type)) &&
+            deal.productTypes.includes("TV") &&
+            deal.productTypes.includes("Phone") &&
+            deal.productTypes.length === 3
+        );
+
+        expect(store.state.providerFilter).toBeFalsy();
+        expect(store.state.productFilters).toEqual(["broadband", "tv"]);
+
+        expect(store.deals).toHaveLength(4);
+        expect(store.deals.map((deal) => deal.id)).toEqual(
+          matchingDeals.map((deal) => deal.id)
+        );
+      });
     });
   });
 });
