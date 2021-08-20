@@ -2,6 +2,7 @@ const path = require("path");
 const rollupPluginSass = require("rollup-plugin-sass");
 const rollupPluginServe = require("rollup-plugin-serve");
 const rollupPluginLiveReload = require("rollup-plugin-livereload");
+const rollupPluginCopy = require("rollup-plugin-copy");
 
 const srcPath = path.join(__dirname, "src");
 const distPath = path.join(__dirname, "public");
@@ -26,6 +27,11 @@ module.exports = {
     }),
     rollupPluginLiveReload({
       watch: distPath
+    }),
+    rollupPluginCopy({
+      targets: [
+        { src: 'src/assets/*', dest: 'public/assets' }
+      ]
     })
   ]
 };

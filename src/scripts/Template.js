@@ -27,6 +27,10 @@ class Template {
       .replace(
         "{{ productList }}",
         this.buildProductIconList(data.productTypes)
+      )
+      .replace(
+        "{{ src }}",
+        '/assets/' + this.getProviderImageName(data.provider.name)
       );
   }
 
@@ -58,6 +62,18 @@ class Template {
 
   buildIcon(id) {
     return this.icon.replace("{{ iconId }}", id);
+  }
+
+  getProviderImageName(name) {
+    switch (name.toLowerCase()) {
+      case "bt":
+        return 'bt.svg'
+      case "ee":
+      case "sky":
+      case "plusnet":
+      case "origin broadband":
+        return name + '.png'
+    }
   }
 
   getIconId(name) {
