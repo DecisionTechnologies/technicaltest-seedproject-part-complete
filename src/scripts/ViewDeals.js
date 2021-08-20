@@ -10,6 +10,10 @@ class ViewDeals {
       const htmlToAppend = this.template.buildDealList(data);
       this.dealList.innerHTML = htmlToAppend;
     }
+    if (data.length === 0) {
+      const htmlToAppend = this.template.buildNoDealPlaceholder();
+      this.dealList.innerHTML = htmlToAppend;
+    }
   }
 
   update(state) {
