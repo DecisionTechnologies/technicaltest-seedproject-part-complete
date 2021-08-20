@@ -123,5 +123,28 @@ describe("Filters", () => {
         );
       });
     });
+
+    describe('filters returning no results', () => {
+      it("shouldn't show anything from Plusnet mobile deals", () => {
+        const PLUSNET = 42  // ID 42 = PLUSNET
+        store.setProviderFilter(PLUSNET);
+        store.setProductFilter("broadband");
+        store.setProductFilter("mobile");
+
+        const matchingDeals = mockData.deals.filter(
+          (deal) =>
+            deal.provider.id === PLUSNET &&
+            deal.productTypes.some((type) => /broadband/i.test(type)) &&
+            deal.productTypes.includes("TV") &&
+            deal.productTypes.includes("Mobile") &&
+            deal.productTypes.length === 3
+        );
+
+        expect(store.state.productFilters).toHaveLength(2);
+        expect(store.state.providerFilter).toEqual(PLUSNET);
+
+        expect(store.deals).toHaveLength(0);
+      });
+    });
   });
 });
