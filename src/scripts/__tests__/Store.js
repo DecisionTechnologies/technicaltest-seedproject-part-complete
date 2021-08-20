@@ -77,5 +77,31 @@ describe("Filters", () => {
         );
       });
     });
+
+    describe('combined filters', () => {
+      it("should tv and broadband deals from BT", () => {
+        const BT = 3  // ID 3 = BT
+        store.setProviderFilter(BT);
+        store.setProductFilter("broadband");
+        store.setProductFilter("tv");
+
+        const matchingDeals = mockData.deals.filter(
+          (deal) =>
+            deal.provider.id === BT &&
+            deal.productTypes.some((type) => /broadband/i.test(type)) &&
+            deal.productTypes.includes("TV") &&
+            deal.productTypes.includes("Phone") &&
+            deal.productTypes.length === 3
+        );
+
+        expect(store.state.productFilters).toHaveLength(2);
+        expect(store.state.providerFilter).toEqual(BT);
+
+        expect(store.deals).toHaveLength(2);
+        expect(store.deals.map((deal) => deal.id)).toEqual(
+          matchingDeals.map((deal) => deal.id)
+        );
+      });
+    });
   });
 });
