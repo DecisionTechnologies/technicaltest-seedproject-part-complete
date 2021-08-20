@@ -106,6 +106,8 @@ class Filter {
     if (!this.state.providerFilter) {
       return true;
     }
+
+    return deal.provider.id === this.state.providerFilter;
   }
 }
 
