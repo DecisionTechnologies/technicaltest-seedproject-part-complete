@@ -19,7 +19,7 @@ describe("Filters", () => {
   });
 
   describe("filters applied", () => {
-    describe("filter by broadband provider", () => {
+    describe("product filters", () => {
       it("should return all broadband deals", () => {
         store.setProductFilter("broadband");
         const matchingDeals = mockData.deals.filter(
@@ -53,6 +53,25 @@ describe("Filters", () => {
         expect(store.state.productFilters).toEqual(["broadband", "tv"]);
 
         expect(store.deals).toHaveLength(4);
+        expect(store.deals.map((deal) => deal.id)).toEqual(
+          matchingDeals.map((deal) => deal.id)
+        );
+      });
+    });
+
+    describe('provider filters', () => {
+      it("should return sky deals", () => {
+        const sky = 1  // ID 1 = Sky
+        store.setProviderFilter(sky);
+        const matchingDeals = mockData.deals.filter(
+          (deal) =>
+            deal.provider.id === sky
+        );
+
+        expect(store.state.productFilters).toHaveLength(0);
+        expect(store.state.providerFilter).toEqual(sky);
+
+        expect(store.deals).toHaveLength(1);
         expect(store.deals.map((deal) => deal.id)).toEqual(
           matchingDeals.map((deal) => deal.id)
         );
