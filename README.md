@@ -11,7 +11,7 @@ Please fork this repository to get started.
 
 ## Scenario
 
-The aim of this exercise is to implement the filter logic for a 'broadband deals' grid.
+The aim of this exercise is to implement the filter logic for a 'broadband deals' grid and add a sorting dropdown to sort the filtered results.
 
 ![screenshot](screenshot.PNG)
 
@@ -37,6 +37,14 @@ The tests are written in [Jest](https://jestjs.io/) and an initial test suite ca
 - **WHEN** filtering by _BT_, _broadband_ **AND** _tv_ **THEN** show the **2** deals for BT with broadband and tv only
 
 > ℹ️ NOTE: 'Broadband' and 'Fibre Broadband' should be considered the same product. 'Phone' should be ignored.
+
+### Sorting criteria
+
+A select should be added to the page with the options: "Default", "Upfront cost", and "Total cost".
+
+- **WHEN** sorting by "Default" apply no sorting
+- **WHEN** sorting by "Upfront cost" sort by the upfrontCost property
+- **WHEN** sorting by "Total cost" sort by the sum of the upfrontCost and totalContractCost properties
 
 ## Getting set up
 

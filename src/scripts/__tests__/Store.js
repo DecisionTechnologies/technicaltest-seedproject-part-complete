@@ -1,16 +1,22 @@
 import Store from "../Store";
 import mockData from "../../../public/db.json";
 
-describe("filter", () => {
-  it("should return all deals when no filters applied", () => {
-    // Arrange
-    const sut = new Store();
-    sut.setDeals(mockData.deals);
+let result;
+let store;
 
-    // Act
-    const result = sut.deals;
+describe("Filtering", () => {
+  beforeEach(() => {
+    store = new Store();
+    store.setDeals(mockData.deals);
+  });
 
-    // Assert
-    expect(result).toEqual(mockData.deals);
+  describe("GIVEN no filters applied", () => {
+    beforeEach(() => {
+      result = store.deals;
+    });
+
+    it("THEN should return all deals", () => {
+      expect(result).toEqual(mockData.deals);
+    });
   });
 });
