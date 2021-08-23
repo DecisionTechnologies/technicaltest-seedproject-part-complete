@@ -40,6 +40,8 @@ The tests are written in [Jest](https://jestjs.io/) and an initial test suite ca
 
 ### Sorting criteria
 
+A select should be added to the page with the options: "Default", "Upfront cost", and "Total cost".
+
 - **WHEN** sorting by "Default" apply no sorting
 - **WHEN** sorting by "Upfront cost" sort by the upfrontCost property
 - **WHEN** sorting by "Total cost" sort by the sum of the upfrontCost and totalContractCost properties
