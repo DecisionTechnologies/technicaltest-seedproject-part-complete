@@ -1,7 +1,8 @@
+import rollupPluginSass from 'rollup-plugin-sass';
+import rollupPluginServe from 'rollup-plugin-serve';
+import rollupPluginLiveReload from 'rollup-plugin-livereload';
+
 const path = require("path");
-const rollupPluginSass = require("rollup-plugin-sass");
-const rollupPluginServe = require("rollup-plugin-serve");
-const rollupPluginLiveReload = require("rollup-plugin-livereload");
 
 const srcPath = path.join(__dirname, "src");
 const distPath = path.join(__dirname, "public");

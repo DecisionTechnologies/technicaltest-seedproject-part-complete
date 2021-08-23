@@ -46,13 +46,8 @@ To get the site up and running, follow these simple steps:
 # Install dependencies
 npm install
 
-# The following steps will need to be run in different processes
-
-# Serve JSON data
-npm run db
-
-# Serve site in 'watch' mode, automatically open default browser
-npm run serve
+# Serve the site and the JSON server
+npm start
 ```
 
 By default, the JSON server runs at `http://localhost:3000`, and the site is served from `http://localhost:5000`.
